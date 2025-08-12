@@ -13,23 +13,15 @@ export default defineNuxtConfig({
     },
     pageTransition: {
       name: 'fade',
-      mode: 'out-in' // default
+      mode: 'out-in', // default
     },
     layoutTransition: {
       name: 'slide',
-      mode: 'out-in' // default
+      mode: 'out-in', // default
     },
   },
 
-  modules: [
-    '@nuxt/ui',
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@nuxt/scripts',
-    '@nuxt/content'
-  ],
+  modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxt/scripts', '@nuxt/content'],
 
   css: ['~/assets/css/main.css'],
 
@@ -51,5 +43,5 @@ export default defineNuxtConfig({
     storageKey: 'color-mode',
   },
 
-  compatibilityDate: '2025-07-16'
+  compatibilityDate: '2025-07-16',
 })

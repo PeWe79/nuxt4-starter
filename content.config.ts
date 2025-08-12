@@ -7,6 +7,6 @@ export default defineContentConfig({
       type: 'page',
       // Load every file inside the `content` directory
       source: '**',
-    })
-  }
+    }),
+  },
 })

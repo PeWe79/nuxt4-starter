@@ -1,54 +1,58 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
-import NuxtLogo from './NuxtLogo.vue';
+import NuxtLogo from './NuxtLogo.vue'
 
-const colorMode = useColorMode();
-const route = useRoute();
+const colorMode = useColorMode()
+const route = useRoute()
 const logo = useTemplateRef('logo')
-const { headerLinks } = useHeaderLinks();
+const { headerLinks } = useHeaderLinks()
 
 const isDark = computed({
-	get() {
-		return colorMode.value === 'dark';
-	},
-	set() {
-		colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark';
-	},
-});
+  get() {
+    return colorMode.value === 'dark'
+  },
+  set() {
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  },
+})
 
 const mobileNavigation = computed<ContentNavigationItem[]>(() => {
-	return [
-		...headerLinks.value.slice(0).map(
-			(link) =>
-				({
-					...link,
-					title: link.label,
-					path: link.to,
-					children: link.children?.map((child) => ({
-						...child,
-						title: child.label,
-						path: child.to,
-					})),
-				}) as ContentNavigationItem
-		),
-	].filter((item): item is ContentNavigationItem => Boolean(item));
-});
+  return [
+    ...headerLinks.value.slice(0).map(
+      (link) =>
+        ({
+          ...link,
+          title: link.label,
+          path: link.to,
+          children: link.children?.map((child) => ({
+            ...child,
+            title: child.label,
+            path: child.to,
+          })),
+        }) as ContentNavigationItem
+    ),
+  ].filter((item): item is ContentNavigationItem => Boolean(item))
+})
 
 const defaultOpen = computed(() => {
-	const topLevelWithChildren = mobileNavigation.value.filter((link) => link.children?.length);
-	const currentPath = route.path;
+  const topLevelWithChildren = mobileNavigation.value.filter((link) => link.children?.length)
+  const currentPath = route.path
 
-	return topLevelWithChildren.some((link) => link.children?.some((child) => currentPath.startsWith(child.path as string)));
-});
+  return topLevelWithChildren.some((link) =>
+    link.children?.some((child) => currentPath.startsWith(child.path as string))
+  )
+})
 </script>
 
 <template>
-	<header class="bg-default/75 backdrop-blur border-b border-default h-(--ui-header-height) sticky top-0 z-50">
-		<div class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full">
-			<div class="lg:flex-1 flex items-center gap-1.5">
-				<NuxtLink to="/" class="flex gap-2 items-end" aria-label="Back to home">
+  <header class="bg-default/75 backdrop-blur border-b border-default h-(--ui-header-height) sticky top-0 z-50">
+    <div
+      class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full"
+    >
+      <div class="lg:flex-1 flex items-center gap-1.5">
+        <NuxtLink to="/" class="flex gap-2 items-end" aria-label="Back to home">
           <NuxtLogo ref="logo" class="block w-auto h-6" />
-					<!-- <svg class="text-highlighted block w-auto h-6" width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- <svg class="text-highlighted block w-auto h-6" width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M377 200C379.16 200 381 198.209 381 196V103C381 103 386 112 395 127L434 194C435.785 197.74 439.744 200 443 200H470V50H443C441.202 50 439 51.4941 439 54V148L421 116L385 55C383.248 51.8912 379.479 50 376 50H350V200H377Z" fill="currentColor"></path>
 						<path d="M726 92H739C742.314 92 745 89.3137 745 86V60H773V92H800V116H773V159C773 169.5 778.057 174 787 174H800V200H783C759.948 200 745 185.071 745 160V116H726V92Z" fill="currentColor"></path>
 						<path
@@ -61,57 +65,57 @@ const defaultOpen = computed(() => {
 							fill="#00DC82"
 						></path>
 					</svg> -->
-				</NuxtLink>
-			</div>
+        </NuxtLink>
+      </div>
 
-			<div class="hidden lg:flex">
-				<UNavigationMenu :items="headerLinks" variant="link" :ui="{ linkLeadingIcon: 'hidden' }" />
-			</div>
+      <div class="hidden lg:flex">
+        <UNavigationMenu :items="headerLinks" variant="link" :ui="{ linkLeadingIcon: 'hidden' }" />
+      </div>
 
-			<div class="flex items-center justify-end lg:flex-1 gap-1.5">
-				<UTooltip text="Dark/Light mode">
-					<UButton
-						:ui="{
-							label: 'hidden sm:inline-flex',
-						}"
-						:icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
-						size="md"
-						variant="ghost"
-						color="neutral"
-						@click="isDark = !isDark"
-					/>
-				</UTooltip>
+      <div class="flex items-center justify-end lg:flex-1 gap-1.5">
+        <UTooltip text="Dark/Light mode">
+          <UButton
+            :ui="{
+              label: 'hidden sm:inline-flex',
+            }"
+            :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
+            size="md"
+            variant="ghost"
+            color="neutral"
+            @click="isDark = !isDark"
+          />
+        </UTooltip>
 
-				<UTooltip text="GitHub Stars">
-					<UButton
-						icon="i-simple-icons-github"
-						to="https://github.com/PeWe79/nuxt4-template.git"
-						target="_blank"
-						variant="ghost"
-						color="neutral"
-						:ui="{
-							label: 'hidden sm:inline-flex',
-						}"
-					>
-						<span class="sr-only">Nuxt on GitHub</span>
-					</UButton>
-				</UTooltip>
+        <UTooltip text="GitHub Stars">
+          <UButton
+            icon="i-simple-icons-github"
+            to="https://github.com/PeWe79/nuxt4-template.git"
+            target="_blank"
+            variant="ghost"
+            color="neutral"
+            :ui="{
+              label: 'hidden sm:inline-flex',
+            }"
+          >
+            <span class="sr-only">Nuxt on GitHub</span>
+          </UButton>
+        </UTooltip>
 
-				<UDropdownMenu
-					:items="mobileNavigation"
-					:default-open="defaultOpen"
-					:content="{
-						align: 'start',
-						side: 'bottom',
-						sideOffset: 8,
-					}"
-					:ui="{
-						content: 'w-48',
-					}"
-				>
-					<UButton icon="i-lucide-menu" color="neutral" variant="ghost" class="lg:hidden" />
-				</UDropdownMenu>
-			</div>
-		</div>
-	</header>
+        <UDropdownMenu
+          :items="mobileNavigation"
+          :default-open="defaultOpen"
+          :content="{
+            align: 'start',
+            side: 'bottom',
+            sideOffset: 8,
+          }"
+          :ui="{
+            content: 'w-48',
+          }"
+        >
+          <UButton icon="i-lucide-menu" color="neutral" variant="ghost" class="lg:hidden" />
+        </UDropdownMenu>
+      </div>
+    </div>
+  </header>
 </template>

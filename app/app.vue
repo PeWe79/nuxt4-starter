@@ -3,31 +3,25 @@ import { useColorMode } from '@vueuse/core'
 import { onMounted, ref } from 'vue'
 
 const colorMode = useColorMode()
-const color = computed(() => colorMode.value === 'dark' ? '#020420' : 'white')
+const color = computed(() => (colorMode.value === 'dark' ? '#020420' : 'white'))
 
 useHead({
-  titleTemplate: title => title ? `${title} · Nuxt` : 'Nuxt4 NuxtUi Template',
-  meta: [
-    { key: 'theme-color', name: 'theme-color', content: color }
-  ]
+  titleTemplate: (title) => (title ? `${title} · Nuxt` : 'Nuxt4 NuxtUi Template'),
+  meta: [{ key: 'theme-color', name: 'theme-color', content: color }],
 })
 if (import.meta.server) {
   useHead({
-    meta: [
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/png', href: '/icon.png' }
-    ],
+    meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/icon.png' }],
     htmlAttrs: {
-      lang: 'en'
-    }
+      lang: 'en',
+    },
   })
   useSeoMeta({
     ogSiteName: 'Nuxt',
     ogType: 'website',
     twitterCard: 'summary_large_image',
-    twitterSite: 'nuxt_js'
+    twitterSite: 'nuxt_js',
   })
 }
 
@@ -44,11 +38,11 @@ onMounted(() => {
 })
 </script>
 <template>
-	<UApp>
-		<NuxtLoadingIndicator color="var(--ui-primary)" />
+  <UApp>
+    <NuxtLoadingIndicator color="var(--ui-primary)" />
 
-		<NuxtLayout>
-			<NuxtPage />
-		</NuxtLayout>
-	</UApp>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
