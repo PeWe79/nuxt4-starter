@@ -89,7 +89,7 @@ const defaultOpen = computed(() => {
         <UTooltip text="GitHub Stars">
           <UButton
             icon="i-simple-icons-github"
-            to="https://github.com/PeWe79/nuxt4-template.git"
+            to="https://github.com/PeWe79/nuxt4-starter.git"
             target="_blank"
             variant="ghost"
             color="neutral"
