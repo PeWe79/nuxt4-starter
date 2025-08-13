@@ -21,9 +21,33 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/ui', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxt/image', '@nuxt/scripts', '@nuxt/content'],
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/icon',
+    '@nuxt/image',
+    '@nuxt/scripts',
+    '@nuxt/content',
+    '@nuxtjs/seo',
+  ],
 
   css: ['~/assets/css/main.css'],
+
+  // site: {
+  //   url: 'https://nuxtseo.com',
+  //   name: 'Nuxt SEO',
+  // },
+
+  seo: {
+    meta: {
+      description: 'This is a Nuxt4 Statrter',
+      themeColor: [
+        { content: '#18181b', media: '(prefers-color-scheme: dark)' },
+        { content: 'white', media: '(prefers-color-scheme: light)' },
+      ],
+    },
+  },
 
   icon: {
     serverBundle: 'local',
