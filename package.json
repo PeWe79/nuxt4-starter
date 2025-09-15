@@ -12,27 +12,29 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write './**/*.{js,vue,ts}'"
   },
+  "overrides": {
+    "vue": "latest"
+  },
   "dependencies": {
     "@iconify-json/heroicons": "^1.2.2",
     "@iconify-json/lucide": "^1.2.62",
     "@iconify-json/simple-icons": "^1.2.47",
-    "@nuxt/content": "^3.6.3",
+    "@nuxt/content": "^3.7.0",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^1.11.0",
-    "@nuxt/scripts": "^0.11.10",
-    "@nuxt/ui": "^3.3.0",
+    "@nuxt/scripts": "^0.11.13",
+    "@nuxt/ui": "^3.3.3",
     "@nuxtjs/seo": "^3.1.0",
     "@unhead/vue": "^2.0.14",
-    "@vueuse/core": "^13.6.0",
+    "@vueuse/core": "^13.9.0",
     "better-sqlite3": "^12.2.0",
-    "nuxt": "^4.0.3",
-    "vue": "^3.5.18",
-    "vue-tsc": "^3.0.5"
+    "nuxt": "^4.1.2",
+    "vue-tsc": "^3.0.7"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.8.0",
-    "eslint": "^9.33.0",
+    "@nuxt/eslint": "^1.9.0",
+    "eslint": "^9.35.0",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   }
