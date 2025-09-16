@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import AppFooter from '../components/AppFooter.vue'
-import AppHeader from '../components/AppHeader.vue'
 import HeroBackground from '../components/HeroBackground.vue'
+import AppFooter from '../components/layouts/AppFooter.vue'
+import AppHeader from '../components/layouts/AppHeader.vue'
 
 const route = useRoute()
 const heroBackgroundClass = computed(() => route.meta?.heroBackground || '')

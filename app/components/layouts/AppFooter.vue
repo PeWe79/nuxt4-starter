@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFooterLinks } from '../composables/useNavigation'
+import { useFooterLinks } from '../../composables/useNavigation'
 
 const { footerLinks } = useFooterLinks()
 </script>

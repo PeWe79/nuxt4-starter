@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
-import NuxtLogo from './NuxtLogo.vue'
+import NuxtLogo from '../NuxtLogo.vue'
 
 const colorMode = useColorMode()
 const route = useRoute()
