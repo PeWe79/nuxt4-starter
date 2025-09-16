@@ -67,5 +67,5 @@ export default defineNuxtConfig({
     storageKey: 'color-mode',
   },
 
-  compatibilityDate: '2025-07-16',
+  compatibilityDate: '2025-09-16',
 })
